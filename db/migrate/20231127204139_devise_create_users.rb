@@ -3,9 +3,9 @@
 class DeviseCreateUsers < ActiveRecord::Migration[7.0]
   def change
     create_table :users do |t|
-      enable_extension("citext")
+     # enable_extension("citext")
       ## Database authenticatable
-      t.citext :email,              null: false, default: ""
+      t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable
@@ -33,7 +33,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-      t.citext :username
+      t.string :username
       t.string :calendar_token
       t.text :calendar_availability
       t.text :preferred_availability

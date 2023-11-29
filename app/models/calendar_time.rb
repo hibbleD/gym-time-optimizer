@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: preferred_times
+# Table name: calendar_times
 #
 #  id          :integer          not null, primary key
 #  day_of_week :string
@@ -12,12 +12,12 @@
 #
 # Indexes
 #
-#  index_preferred_times_on_user_id  (user_id)
+#  index_calendar_times_on_user_id  (user_id)
 #
 # Foreign Keys
 #
 #  user_id  (user_id => users.id)
 #
-class PreferredTime < ApplicationRecord
+class CalendarTime < ApplicationRecord
   belongs_to :user
 end

@@ -1,4 +1,4 @@
-class CreateCalendarAvailabilities < ActiveRecord::Migration[7.0]
+class CreateCalendarTimes < ActiveRecord::Migration[7.0]
   def change
     create_table :calendar_times do |t|
       t.references :user, null: false, foreign_key: true
