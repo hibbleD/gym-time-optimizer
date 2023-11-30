@@ -33,6 +33,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :preferred_times
-  has_many :calendar_availabilities
+  has_many :calendar_times
   has_many :session_suggestions
 end
