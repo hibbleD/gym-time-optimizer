@@ -1,9 +1,5 @@
 desc "Fill the database tables with some sample data"
 # lib/tasks/sample_data.rake
-namespace :sample_data do
-  task :generate_fake_data => :environment do
-    p "generating sample data"
-    # ... (previous definitions)
 
     # Task for generating fake users, preferred_times, and calendar_times
     task :generate_fake_users do
@@ -20,18 +16,26 @@ namespace :sample_data do
           # Add other user attributes as needed
         )
 
+        pp "Everything is fine so far"
         user.preferred_times.create!(
+          
           day_of_week: days_of_week.sample,
           start_hour: Faker::Time.between(from: DateTime.now, to: DateTime.now + 30, format: :short),
-          end_time: Faker::Time.between(from: DateTime.now + 31, to: DateTime.now + 60, format: :short),
+          end_hour: Faker::Time.between(from: DateTime.now + 31, to: DateTime.now + 60, format: :short),
         )
+
+        pp user.preferred_times
 
         user.calendar_times.create!(
           start_hour: Faker::Time.between(from: DateTime.now, to: DateTime.now + 30, format: :short),
           end_hour: Faker::Time.between(from: DateTime.now + 31, to: DateTime.now + 60, format: :short),
           description: Faker::Lorem.sentence,
         )
+        pp user.calendar_times
       end
+
+      p "There are now #{User.count} users."
+      
     end
 
     # Task for generating fake data for a single gym
@@ -69,5 +73,4 @@ namespace :sample_data do
     task :generate_all => [:generate_fake_users, :generate_fake_gym] do
       puts "All fake data generated successfully!"
     end
-  end
-end
+  
