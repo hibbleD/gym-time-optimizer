@@ -7,7 +7,7 @@ class BusyTimesController < ApplicationController
   end
 
   def show
-    api_key = "AIzaSyAHepLuF0tUGunL_6ICJMC48hUP_ewEOEs"
+    api_key = ENV['GOOGLE_MAPS_API_KEY']
     gym_place_id = "ChIJ3RSaYE_LD4gRts0TShMrFjc"
 
     # Define a cache key based on the current date
