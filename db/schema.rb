@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_28_221714) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_04_222128) do
   create_table "busy_times", force: :cascade do |t|
     t.integer "place_id", null: false
     t.integer "day_of_week"
@@ -28,6 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_28_221714) do
     t.integer "end_hour"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "description"
     t.index ["user_id"], name: "index_calendar_times_on_user_id"
   end
 

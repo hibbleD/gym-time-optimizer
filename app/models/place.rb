@@ -9,5 +9,6 @@
 #  google_place_id :integer
 #
 class Place < ApplicationRecord
-  has_many :busy_times
+  has_many :busy_times, dependent: :destroy
+  has_many :session_suggestions
 end

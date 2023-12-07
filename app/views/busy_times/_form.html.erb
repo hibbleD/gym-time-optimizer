@@ -1,0 +1,17 @@
+<%= form_with(model: busy_time) do |form| %>
+  <% if busy_time.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(busy_time.errors.count, "error") %> prohibited this busy_time from being saved:</h2>
+
+      <ul>
+        <% busy_time.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

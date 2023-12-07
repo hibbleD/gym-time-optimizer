@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Preferred times</h1>
+
+<div id="preferred_times">
+  <% @preferred_times.each do |preferred_time| %>
+    <%= render preferred_time %>
+    <p>
+      <%= link_to "Show this preferred time", preferred_time %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New preferred time", new_preferred_time_path %>

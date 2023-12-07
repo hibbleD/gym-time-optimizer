@@ -1,0 +1,13 @@
+<h1>Current Busyness Level</h1>
+
+<p>Hourly Busy Times: <%= @hourly_busy_times %></p>
+<p>Busyness Level: <%= @busyness_level %></p>
+
+<%# Add logic to determine user-friendly labels based on busyness level %>
+<% if @busyness_level < 30 %>
+  <p>Busyness Label: Not Busy</p>
+<% elsif @busyness_level < 70 %>
+  <p>Busyness Label: Busy</p>
+<% else %>
+  <p>Busyness Label: Very Busy</p>
+<% end %>

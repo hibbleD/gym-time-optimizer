@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Session suggestions</h1>
+
+<div id="session_suggestions">
+  <% @session_suggestions.each do |session_suggestion| %>
+    <%= render session_suggestion %>
+    <p>
+      <%= link_to "Show this session suggestion", session_suggestion %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New session suggestion", new_session_suggestion_path %>

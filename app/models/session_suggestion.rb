@@ -25,5 +25,36 @@
 class SessionSuggestion < ApplicationRecord
   belongs_to :user
   belongs_to :place
-  belongs_to :busy_time
+
+  # Add other necessary validations and callbacks as needed
+
+  def calculate_recommended_time
+    # Get the busyness levels for the associated place
+    busyness_levels = place.busy_times.pluck(:busyness_level)
+
+    # Get the user's preferred time range
+    preferred_start_hour = user.preferred_times.minimum(:start_hour)
+    preferred_end_hour = user.preferred_times.maximum(:end_hour)
+
+    # Get the user's calendar times for the current day
+    user_calendar_times = user.calendar_times.where(day_of_week: Date.today.wday)
+
+    # Create an array to store the busyness levels for each hour within the user's preferred time range
+    busyness_levels_within_preference = []
+
+    # Iterate over each hour in the user's preferred time range
+    (preferred_start_hour..preferred_end_hour).each do |hour|
+      # Check if the user has a calendar time for the current hour
+      unless user_calendar_times.exists?(start_hour: hour)
+        # If not, add the busyness level for the current hour to the array
+        busyness_levels_within_preference.push(busyness_levels[hour - 1])
+      end
+    end
+
+    # Find the hour with the minimum busyness level within the user's preferred time range
+    recommended_hour = preferred_start_hour + busyness_levels_within_preference.index(busyness_levels_within_preference.min)
+
+    # Update the recommended_time attribute with the calculated time
+    update(recommended_time: recommended_hour)
+  end
 end

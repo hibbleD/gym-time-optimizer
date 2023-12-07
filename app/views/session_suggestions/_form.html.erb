@@ -1,0 +1,17 @@
+<%= form_with(model: session_suggestion) do |form| %>
+  <% if session_suggestion.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(session_suggestion.errors.count, "error") %> prohibited this session_suggestion from being saved:</h2>
+
+      <ul>
+        <% session_suggestion.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

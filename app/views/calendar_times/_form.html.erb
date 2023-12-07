@@ -1,0 +1,17 @@
+<%= form_with(model: calendar_time) do |form| %>
+  <% if calendar_time.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(calendar_time.errors.count, "error") %> prohibited this calendar_time from being saved:</h2>
+
+      <ul>
+        <% calendar_time.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

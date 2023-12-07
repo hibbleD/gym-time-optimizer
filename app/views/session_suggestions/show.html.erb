@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @session_suggestion %>
+
+<div>
+  <%= link_to "Edit this session suggestion", edit_session_suggestion_path(@session_suggestion) %> |
+  <%= link_to "Back to session suggestions", session_suggestions_path %>
+
+  <%= button_to "Destroy this session suggestion", @session_suggestion, method: :delete %>
+</div>

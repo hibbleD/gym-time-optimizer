@@ -34,5 +34,5 @@ class User < ApplicationRecord
 
   has_many :preferred_times
   has_many :calendar_times
-  has_many :session_suggestions
+  has_one :session_suggestion
 end

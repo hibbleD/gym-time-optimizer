@@ -1,0 +1,17 @@
+<%= form_with(model: preferred_time) do |form| %>
+  <% if preferred_time.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(preferred_time.errors.count, "error") %> prohibited this preferred_time from being saved:</h2>
+
+      <ul>
+        <% preferred_time.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -21,5 +21,5 @@
 class BusyTime < ApplicationRecord
   belongs_to :place
 
-  enum status: { not_busy: "Not busy", moderately_busy: "Moderately busy", busy: "Busy" }
+    enum status: { not_busy: "Not busy", moderately_busy: "Moderately busy", busy: "Busy" }
 end
